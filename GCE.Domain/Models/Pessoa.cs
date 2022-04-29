@@ -13,7 +13,7 @@ namespace Gce.Domain.Models
         [Key]
         public int Id { get; set; }
 
-        //Quando CNPJ é Razão Social
+        //Quando PJ é Razão Social
         [Required]
         [StringLength(120)]
         [Display(Name = "Nome")]

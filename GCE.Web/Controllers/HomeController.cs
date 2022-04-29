@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace GCE.Controllers
+namespace GCE.Web.Controllers
 {
     public class HomeController : Controller
     {

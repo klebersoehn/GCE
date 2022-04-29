@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace GCE
+namespace GCE.Web
 {
     public class BundleConfig
     {

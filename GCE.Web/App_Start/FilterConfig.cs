@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace GCE
+namespace GCE.Web
 {
     public class FilterConfig
     {

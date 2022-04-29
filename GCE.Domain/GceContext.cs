@@ -1,4 +1,4 @@
-﻿using Gce.Domain.Models;
+﻿using GCE.Domain.Models;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gce.Domain.Models
+namespace GCE.Domain.Models
 {
     public partial class Pessoa : BaseEntity, IValidatableObject
     {
@@ -84,6 +84,7 @@ namespace Gce.Domain.Models
         [Display(Name = "Tipo de Pessoa")]
         public TipoPessoa TipoPessoa { get; set; }
 
+        [Required]
         [Display(Name = "Tipo de Empresa")]
         public TipoEmpresa TipoEmpresa { get; set; }
 
@@ -119,11 +120,6 @@ namespace Gce.Domain.Models
                     yield return new ValidationResult(string.Format("O campo {0} é obrigatório.", "Cnpj"), new[] { nameof(Cnpj) });
                 }
 
-                if (TipoEmpresa == 0)
-                {
-                    yield return new ValidationResult(string.Format("O campo {0} é obrigatório.", "TipoEmpresa"), new[] { nameof(TipoEmpresa) });
-                }
-
                 if (Porte == 0)
                 {
                     yield return new ValidationResult(string.Format("O campo {0} é obrigatório.", "Porte"), new[] { nameof(Porte) });
@@ -143,10 +139,6 @@ namespace Gce.Domain.Models
                 if (string.IsNullOrEmpty(Profissao))
                 {
                     yield return new ValidationResult(string.Format("O campo {0} é obrigatório.", "Profissao"), new[] { nameof(Profissao) });
-                }
-                if (TipoEmpresa == 0)
-                {
-                    yield return new ValidationResult(string.Format("O campo {0} é obrigatório.", "TipoEmpresa"), new[] { nameof(TipoEmpresa) });
                 }
                 if (!DataNascimento.HasValue)
                 {

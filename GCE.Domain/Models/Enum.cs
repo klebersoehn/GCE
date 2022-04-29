@@ -7,8 +7,11 @@ namespace GCE.Domain.Models
         [Display(Name = "Ativo")]
         Ativo = 1,
 
-        [Display(Name = "Inativo")]
-        Inativo = 2
+        [Display(Name = "Desativado")]
+        Desativado = 2,
+
+        [Display(Name = "Em elaboração")]
+        Elaboracao = 3
     }
 
     public enum Nacional
@@ -34,8 +37,8 @@ namespace GCE.Domain.Models
         [Display(Name = "Ltda")]
         Ltda = 1,
 
-        [Display(Name = "Me")]
-        Me = 2
+        [Display(Name = "Leiloeiro")]
+        Leiloeiro = 3
     }
 
     public enum Porte

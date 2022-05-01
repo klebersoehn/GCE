@@ -105,6 +105,10 @@ namespace GCE.Domain.Models
         [Display(Name = "Caracterização do Capital")]
         public CaracterizacaoCaptal CaracterizacaoCaptal { get; set; }
 
+        [Display(Name ="Cpf/Cnpj")]
+        [NotMapped]
+        public string CpfCnpj { get { return (this.TipoPessoa == TipoPessoa.Fisica ? this.Cpf : this.Cnpj); } set { } }
+
 
         public Pessoa()
         {

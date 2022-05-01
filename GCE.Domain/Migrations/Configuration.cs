@@ -65,6 +65,7 @@
                 Email = "contato@gmail.com",
                 DataNascimento = Convert.ToDateTime("1979-12-12"),
                 Nacionalidade = "Brasileira",
+                Profissao = "Não Informado",
                 CreatedBy = "Gce"
             };
 
@@ -83,6 +84,7 @@
                 Email = "contato@gmail.com",
                 DataNascimento = Convert.ToDateTime("1979-12-12"),
                 Nacionalidade = "Brasileira",
+                Profissao = "Não Informado",
                 CreatedBy = "Gce"
             };
 

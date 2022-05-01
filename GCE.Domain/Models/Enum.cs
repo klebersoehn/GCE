@@ -25,10 +25,10 @@ namespace GCE.Domain.Models
 
     public enum TipoPessoa
     {
-        [Display(Name = "Física")]
+        [Display(Name = "Pessoa Física")]
         Fisica = 1,
 
-        [Display(Name = "Jurídica")]
+        [Display(Name = "Pessoa Jurídica")]
         Juridica = 2
     }
 

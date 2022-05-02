@@ -61,7 +61,7 @@
         $(document).ready(function () {
             $('#fornecedores').DataTable({
                 "scrollX": true,
-                "scrollY": (window.innerHeight - 300) + "px"
+                "scrollY": (window.innerHeight - 280) + "px"
             });
         });
     </script>
@@ -69,7 +69,7 @@
     <script>
         $('body').on('click', '.dialog-buton', function () { });
 
-        $('.modal-body').css({ "height": (window.innerHeight - 200) + "px" });
+        $('.modal-body').css({ "height": (window.innerHeight - 100) + "px" });
 
         $('#DialogModal').on('hidden.bs.modal', function () {
             location.reload();

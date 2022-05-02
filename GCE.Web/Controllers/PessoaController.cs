@@ -16,12 +16,7 @@ namespace GCE.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult _Grid()
-        {
-            return PartialView(db.Pessoas.ToList());
+            return View(db.Pessoas.ToList());
         }
 
         public ActionResult _Create()
@@ -68,13 +63,6 @@ namespace GCE.Web.Controllers
                 return HttpNotFound();
             }
 
-            if (pessoa.Situacao != Situacao.Elaboracao)
-            {
-                Notify(NotifyStatus.Warning, "Não é possível Modificar pessoa com situação Ativada ou Desativada!!!");
-
-                return PartialView("_Mensagem");
-            }
-
             return PartialView(pessoa);
         }
 
@@ -82,6 +70,13 @@ namespace GCE.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult _Edit(Pessoa pessoa)
         {
+            if (pessoa.Situacao != Situacao.Elaboracao)
+            {
+                Notify(NotifyStatus.Warning, "Não é possível Modificar pessoa com situação Ativada ou Desativada!!!");
+
+                return PartialView("_Mensagem");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(pessoa).State = EntityState.Modified;
@@ -92,6 +87,90 @@ namespace GCE.Web.Controllers
                 return RedirectToAction("_Edit", pessoa.Id);
             }
             return PartialView(pessoa);
+        }
+
+        public ActionResult _Ativar(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (id == 0)
+            {
+                Notify(NotifyStatus.Warning, "Nenhum registro selecionado!!!");
+                return PartialView("_Mensagem");
+            }
+
+            Pessoa pessoa = db.Pessoas.Find(id);
+
+            if (pessoa == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (pessoa.Situacao == Situacao.Ativo)
+            {
+                Notify(NotifyStatus.Warning, "O Registro já se encontra Ativado!!!");
+                return PartialView("_Mensagem");
+            }
+
+            return PartialView(pessoa);
+        }
+
+        public ActionResult _AtivarConfirmed(int id)
+        {
+            Pessoa pessoa = db.Pessoas.Find(id);
+
+            db.Entry(pessoa).State = EntityState.Modified;
+            pessoa.Situacao = Situacao.Ativo;
+
+            db.SaveChanges();
+
+            Notify(NotifyStatus.Success, "Registro Ativado com Sucesso!!!");
+
+            return PartialView("_Mensagem");
+        }
+
+        public ActionResult _Desativar(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (id == 0)
+            {
+                Notify(NotifyStatus.Warning, "Nenhum registro selecionado!!!");
+                return PartialView("_Mensagem");
+            }
+
+            Pessoa pessoa = db.Pessoas.Find(id);
+
+            if (pessoa == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (pessoa.Situacao == Situacao.Desativado)
+            {
+                Notify(NotifyStatus.Warning, "O Registro já se encontra Desativado!!!");
+                return PartialView("_Mensagem");
+            }
+
+            return PartialView(pessoa);
+        }
+
+        public ActionResult _DesativarConfirmed(int id)
+        {
+            Pessoa pessoa = db.Pessoas.Find(id);
+
+            db.Entry(pessoa).State = EntityState.Modified;
+            pessoa.Situacao = Situacao.Desativado;
+
+            db.SaveChanges();
+
+            Notify(NotifyStatus.Success, "Registro Desativado com Sucesso!!!");
+
+            return PartialView("_Mensagem");
         }
 
         public ActionResult _Delete(int? id)
@@ -135,6 +214,5 @@ namespace GCE.Web.Controllers
 
             return PartialView("_Mensagem");
         }
-
     }
 }

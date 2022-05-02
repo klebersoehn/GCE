@@ -2,11 +2,11 @@
 
 <div class="card">
     <div class="card-header">
-        Excluir Registro
+        Ativar Registro
     </div>
     <div class="card-body">
-        <h5 class="card-title">Excluir Registro Permanentemente</h5>
-        <p class="card-text">Tem certeza de que deseja excluir este registro?</p>
+        @*<h5 class="card-title">Excluir Registro Permanentemente</h5>*@
+        <p class="card-text">Tem certeza de que deseja ativar este registro?</p>
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.Nome)
@@ -21,7 +21,7 @@
                 @Html.DisplayFor(model => model.CpfCnpj)
             </dd>
         </dl>
-        @Ajax.ActionLink("Sim", "_DeleteConfirmed", "Pessoa", new { Id = Model.Id }, new AjaxOptions() { UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-primary" })
+        @Ajax.ActionLink("Sim", "_AtivarConfirmed", "Pessoa", new { Id = Model.Id }, new AjaxOptions() { UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-primary" })
         <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Não</button>
     </div>
 </div>

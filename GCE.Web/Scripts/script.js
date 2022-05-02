@@ -27,3 +27,4 @@ $('.currency').maskMoney({
     allowZero: true,
     allowNegative: false
 }).maskMoney('mask');
+

@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<GCE.Domain.Models.Pessoa>
+
 <nav class="navbar navbar-light border-bottom px-2" style="background-color: #e3f2fd;">
     <span class="navbar-brand">Fornecedores</span>
     <ul class="nav" id="NavFornecedor">
@@ -12,10 +13,10 @@
             @Ajax.ActionLink("Excluir", "_Delete", "Pessoa", new { Id = "0" }, new AjaxOptions() { UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link dialog-buton", data_toggle = "modal", data_target = "#DialogModal" })
         </li>
         <li class="nav-item">
-            @Ajax.ActionLink("Ativar", "_Ativar", "Pessoa", new { Id = "0" }, new AjaxOptions() { UpdateTargetId = "_ContentGrid", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link"})
+            @Ajax.ActionLink("Ativar", "_Ativar", "Pessoa", new { Id = "0" }, new AjaxOptions() { UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link dialog-buton", data_toggle = "modal", data_target = "#DialogModal" })
         </li>
         <li class="nav-item">
-            @Ajax.ActionLink("Desativar", "_Desativar", "Pessoa", new { Id = "0" }, new AjaxOptions() { UpdateTargetId = "_ContentGrid", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link"})
+            @Ajax.ActionLink("Desativar", "_Desativar", "Pessoa", new { Id = "0" }, new AjaxOptions() { UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link dialog-buton", data_toggle = "modal", data_target = "#DialogModal" })
         </li>
         <li class="nav-item">
             @Html.ActionLink("Voltar", "Index", "Home", null, new { @class = "nav-link" })
@@ -23,8 +24,80 @@
     </ul>
 </nav>
 
-<div class="p-2" id="_ContentGrid">
-    @{Html.RenderAction("_Grid");}
+@{Html.RenderPartial("_Notification");}
+
+<div class="p-2">
+    <table id="fornecedores" class="table table-striped">
+        <thead>
+            <tr>
+                <th data-orderable="false">#</th>
+                <th style="width:150px">
+                    @Html.DisplayNameFor(model => model.TipoPessoa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nacional)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CpfCnpj)
+                </th>
+                <th style="width:280px">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Porte)
+                </th>
+                <th style="width:150px">
+                    @Html.DisplayNameFor(model => model.DataNascimento)
+                </th>
+                <th style="width:200px">
+                    @Html.DisplayNameFor(model => model.DataConstituicao)
+                </th>
+                <th style="width:150px">
+                    @Html.DisplayNameFor(model => model.Fone1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Situacao)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.RadioButton("select_Id", item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoPessoa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nacional)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CpfCnpj)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Porte)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataNascimento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataConstituicao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fone1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Situacao)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
 <script src="~/Scripts/jquery-3.6.0.min.js"></script>

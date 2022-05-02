@@ -28,7 +28,7 @@
                 Porte = Porte.Outros,
                 Fone1 = "(51) 3366-3806",
                 Email = "contato@gmail.com",
-                CaptalSocial = Convert.ToDecimal(82500000.00),
+                CaptalSocial = Convert.ToDecimal(8250.00),
                 CreatedBy = "Gce"                
             };
 
@@ -46,7 +46,7 @@
                 Porte = Porte.Outros,
                 Fone1 = "(51) 3366-3806",
                 Email = "contato@gmail.com",
-                CaptalSocial = Convert.ToDecimal(82500000.00),
+                CaptalSocial = Convert.ToDecimal(8250.00),
                 CreatedBy = "Gce"
             };
 

@@ -12,11 +12,11 @@ namespace GCE.Web
     {
         protected void Application_Start()
         {
-            //ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
-            //ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
+            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+            ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
 
-            //ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
-            //ModelBinders.Binders.Add(typeof(DateTime?), new NullableDateTimeModelBinder());
+            ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
+            ModelBinders.Binders.Add(typeof(DateTime?), new NullableDateTimeModelBinder());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

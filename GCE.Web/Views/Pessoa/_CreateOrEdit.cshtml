@@ -161,7 +161,7 @@
     </div>
 </div>
 
-@Scripts.Render("~/Scripts/Forms")
+@Scripts.Render("~/bundles/jquery")
 
 <script type="text/javascript">
     $(function () {
@@ -184,6 +184,7 @@
             $('#_ContentHeaderModal').html(data);
         });
     });
+
 </script>
 
 @if (Model != null && Model.Id > 0)

@@ -1,0 +1,15 @@
+﻿@model GCE.Domain.Models.Pessoa
+
+@using (Ajax.BeginForm("_Create", "Pessoa", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @{ Html.RenderPartial("_CreateOrEdit"); }
+
+        <button type="submit" id="btn-submit" style="display:none"></button>
+    </div>
+}

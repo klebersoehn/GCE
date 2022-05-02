@@ -74,12 +74,13 @@ namespace GCE.Domain.Models
         [Display(Name = "Quantidade de Quota")]
         public int? QuantidadeQuota { get; set; }
 
+        [Display(Name = "Valor Quota")]
         [DataType(DataType.Currency)]
         public decimal? ValorQuota { get; set; }
 
         [Display(Name = "Capital Social")]
         [DataType(DataType.Currency)]
-        public decimal CaptalSocial { get; set; }
+        public decimal? CaptalSocial { get; set; }
 
         [Display(Name = "Tipo de Pessoa")]
         public TipoPessoa TipoPessoa { get; set; }

@@ -9,10 +9,23 @@ namespace GCE.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.min.js",
+                        "~/Scripts/jquery.mask.min.js",
+                        "~/Scripts/jquery.maskMoney.js",
+                        "~/Scripts/script.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/Forms").Include(
+                        "~/Scripts/jquery.mask.min.js",
+                        "~/Scripts/jquery.maskMoney.js",
+                        "~/Scripts/script.js",
+                        "~/Scripts/jquery.validate.min.js",
+                        "~/Scripts/jquery.validate.unobtrusive.min.js",
+                        "~/Scripts/globalize.js",
+                        "~/Scripts/jquery.validate.globalize.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                 "~/Scripts/jquery.validate*"));
 
             // Use a versão em desenvolvimento do Modernizr para desenvolver e aprender com ela. Após isso, quando você estiver
             // pronto para a produção, utilize a ferramenta de build em https://modernizr.com para escolher somente os testes que precisa.

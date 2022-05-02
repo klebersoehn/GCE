@@ -1,0 +1,13 @@
+﻿@model int?
+
+<h4 class="modal-title" id="ModalAbreTudoLabel" style="margin-left:20px">Fornecedor</h4>
+
+<div class="btn-group" role="group" aria-label="Acoes">
+    @if (Model != null)
+    {
+        @Ajax.ActionLink("Desativar", "_Desativar", "Pessoa", new { Id = Model }, new AjaxOptions() { UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-primary" })
+        @*<button type="button" class="btn btn-primary">Desativar</button>*@
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('btn-submit').click()">Gravar</button>
+    }
+    <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Fechar</button>
+</div>

@@ -1,0 +1,3 @@
+@model decimal?
+
+@Html.TextBox("", Model.HasValue && Model.Value != default(decimal) ? Math.Round(Model.Value, 2).ToString() : "", new { @class = "currency form-control" })

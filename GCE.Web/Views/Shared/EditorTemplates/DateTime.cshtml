@@ -1,0 +1,4 @@
+﻿@model DateTime?
+
+@Html.TextBox("", Model.HasValue && Model.Value != DateTime.MinValue ? Model.Value.ToShortDateString() : "", new { @class = "mask-datetime form-control" })
+

@@ -1,110 +1,53 @@
-﻿@model IEnumerable<GCE.Domain.Models.Pessoa>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-@*<nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">@Html.ActionLink("Principal","Index","Home")</li>
-            <li class="breadcrumb-item active" aria-current="page">Fornecedores</li>
-        </ol>
-    </nav>*@
-
+﻿
 <nav class="navbar navbar-light border-bottom px-2" style="background-color: #e3f2fd;">
     <span class="navbar-brand">Fornecedores</span>
-    <ul class="nav">
+    <ul class="nav" id="NavFornecedor">
         <li class="nav-item">
-            @Ajax.ActionLink("Incluir","Create","Pessoa", null, new AjaxOptions() { UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link active dialog-buton", data_toggle="modal", data_target = "#DialogModal" })
+            @Ajax.ActionLink("Incluir", "_Create", "Pessoa", null, new AjaxOptions() { UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link dialog-buton", data_toggle = "modal", data_target = "#DialogModal" })
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Abrir</a>
+            @Ajax.ActionLink("Abrir", "_Edit", "Pessoa", new { Id = "0" }, new AjaxOptions() { UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link dialog-buton", data_toggle = "modal", data_target = "#DialogModal" })
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Excluir</a>
+            @Ajax.ActionLink("Excluir", "_Delete", "Pessoa", new { Id = "0" }, new AjaxOptions() { UpdateTargetId = "_ContentModal", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link dialog-buton", data_toggle = "modal", data_target = "#DialogModal" })
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Ativar</a>
+            @Ajax.ActionLink("Ativar", "_Ativar", "Pessoa", new { Id = "0" }, new AjaxOptions() { UpdateTargetId = "_ContentGrid", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link"})
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Desativar</a>
+            @Ajax.ActionLink("Desativar", "_Desativar", "Pessoa", new { Id = "0" }, new AjaxOptions() { UpdateTargetId = "_ContentGrid", InsertionMode = InsertionMode.Replace }, new { @class = "nav-link"})
         </li>
         <li class="nav-item">
-            @Html.ActionLink("Voltar","Index", "Home", null, new { @class = "nav-link" })
+            @Html.ActionLink("Voltar", "Index", "Home", null, new { @class = "nav-link" })
         </li>
     </ul>
 </nav>
 
-<div class="p-2">
-    <table id="fornecedores" class="table table-striped">
-        <thead>
-            <tr>
-                <th data-orderable="false">#</th>
-                <th style="width:150px">
-                    @Html.DisplayNameFor(model => model.TipoPessoa)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nacional)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CpfCnpj)
-                </th>
-                <th style="width:250px">
-                    @Html.DisplayNameFor(model => model.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Porte)
-                </th>
-                <th style="width:150px">
-                    @Html.DisplayNameFor(model => model.DataNascimento)
-                </th>
-                <th style="width:200px">
-                    @Html.DisplayNameFor(model => model.DataConstituicao)
-                </th>
-                <th style="width:150px">
-                    @Html.DisplayNameFor(model => model.Fone1)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Situacao)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td class="align-middle">
-                        @Html.RadioButton("select_Id", item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TipoPessoa)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nacional)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CpfCnpj)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Porte)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataNascimento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataConstituicao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Fone1)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Situacao)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="p-2" id="_ContentGrid">
+    @{Html.RenderAction("_Grid");}
 </div>
+
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("input[name='select_Id']").change(function () {
+
+            var id = this.value;
+
+            $("#NavFornecedor .nav-item a").each(function () {
+
+                var src = $(this).attr("href");
+
+                var srcArray = src.split('/');
+
+                var srcNew = "";
+
+                for (var i = 0; i < (srcArray.length - 1); i++) {
+                    srcNew += srcArray[i] + "/"
+                }
+
+                $(this).attr("href", srcNew + id);
+            });
+        });
+    });
+</script>

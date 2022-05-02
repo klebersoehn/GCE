@@ -81,6 +81,10 @@
     <Compile Include="Migrations\202204291853585_Initial.designer.cs">
       <DependentUpon>202204291853585_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205020030518_editPessoa.cs" />
+    <Compile Include="Migrations\202205020030518_editPessoa.designer.cs">
+      <DependentUpon>202205020030518_editPessoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Enum.cs" />
@@ -100,6 +104,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204291853585_Initial.resx">
       <DependentUpon>202204291853585_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205020030518_editPessoa.resx">
+      <DependentUpon>202205020030518_editPessoa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

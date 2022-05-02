@@ -38,23 +38,14 @@
          aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" id="_ContentHeaderModal">
 
-                    <button type="button" class="btn btn-primary btn-icon-split btn-sm" onclick="iframeModal.contentWindow.history.back();">
-                        <span class="icon text-white-50"><i class="fas fa-arrow-left"></i></span>
-                    </button>
-
-                    <h4 class="modal-title" id="ModalAbreTudoLabel" style="margin-left:20px"></h4>
-
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
                 </div>
                 <div class="modal-body" id="_ContentModal">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    @*<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>*@
                 </div>
             </div>
         </div>
@@ -62,7 +53,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/bundles/bootstrap")*@
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     @Scripts.Render("~/bundles/datatable")
     @RenderSection("scripts", required: false)
@@ -71,22 +61,19 @@
         $(document).ready(function () {
             $('#fornecedores').DataTable({
                 "scrollX": true,
-                "scrollY": (window.innerHeight - 280) + "px"
+                "scrollY": (window.innerHeight - 300) + "px"
             });
         });
     </script>
 
     <script>
-        $('body').on('click', '.dialog-buton', function () {
-            //var url = $(this).attr("data-source");
-
-        });
-
-        //$("#iframeModal").ready(function () {
-        //    $("#first").fadeOut()
-        //});
+        $('body').on('click', '.dialog-buton', function () { });
 
         $('.modal-body').css({ "height": (window.innerHeight - 200) + "px" });
+
+        $('#DialogModal').on('hidden.bs.modal', function () {
+            location.reload();
+        })
 
     </script>
 

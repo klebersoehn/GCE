@@ -1,0 +1,9 @@
+﻿@{Html.RenderPartial("_Notification");}
+
+<script>
+    $(document).ready(function () {
+        $.get('@Url.Action("_HeaderModal")', function (data) {
+            $('#_ContentHeaderModal').html(data);
+        });
+    });
+</script>

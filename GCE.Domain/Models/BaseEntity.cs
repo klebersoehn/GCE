@@ -15,6 +15,7 @@ namespace GCE.Domain.Models
 		[ScaffoldColumn(false)]
 		public string UpdatedBy { get; set; }
 
+		[Display(Name = "Ultima Atualização")]
 		[DataType(DataType.Date)]
 		[ScaffoldColumn(false)]
 		public DateTime? UpdatedDate { get; set; }

@@ -1,0 +1,44 @@
+﻿<div id="_NotificationMessage">
+    @{
+        if (TempData.ContainsKey("notify-status") && TempData.ContainsKey("notify-message"))
+        {
+            string notifyStatus = TempData["notify-status"] as string;
+            string notifyMessage = TempData["notify-message"] as string;
+            string notifyTimeout = null;
+
+            if ((TempData["notify-infinite"] as string) == "infinite")
+            {
+                notifyTimeout = "null";
+            }
+
+            if (notifyStatus == NotifyStatus.Information.ToString())
+            {
+                <div class="alert alert-info" role="alert">
+                    @MvcHtmlString.Create(notifyMessage.Replace("\n", "<br />"))
+                </div>
+            }
+            else if (notifyStatus == NotifyStatus.Warning.ToString())
+            {
+                <div class="alert alert-warning" role="alert">
+                    @MvcHtmlString.Create(notifyMessage.Replace("\n", "<br />"))
+                </div>
+            }
+            else if (notifyStatus == NotifyStatus.Error.ToString())
+            {
+                <div class="alert alert-danger" role="alert">
+                    @MvcHtmlString.Create(notifyMessage.Replace("\n", "<br />"))
+                </div>
+            }
+            else if (notifyStatus == NotifyStatus.Success.ToString())
+            {
+                <div class="alert alert-sucess" role="alert">
+                    @MvcHtmlString.Create(notifyMessage.Replace("\n", "<br />"))
+                </div>
+            }
+
+            TempData.Remove("notify-status");
+            TempData.Remove("notify-message");
+            TempData.Remove("notify-infinite");
+        }
+    }
+</div>
